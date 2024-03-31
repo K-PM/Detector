@@ -1,0 +1,48 @@
+name: proyect_face_ia
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.6
+  path: ^1.9.0
+  
+  image_picker: ^1.0.7
+  camera: ^0.10.1
+  path_provider: ^2.1.2
+  tflite: ^1.1.2
+  image: ^4.1.7
+
+  processing_camera_image: ^0.0.12
+  rxdart: ^0.27.7
+  face_detection: ^0.0.6
+  google_mlkit_face_detection: ^0.9.0
+  google_mlkit_commons: ^0.6.1
+  
+
+  google_ml_kit: ^0.16.3
+  firebase_core: ^2.27.2
+  
+
+
+
+#--------------------------------------------
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  assets:
+    - assets/modelo.tflite
+    - assets/etiquetas.txt
+  uses-material-design: true
+
