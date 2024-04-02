@@ -21,6 +21,7 @@ class _FaceDetectorViewState extends State<FaceDetectorView> {
 
   String _result = '';
   bool _isModelReady = false;
+  String color = '';
   
 
   @override
@@ -82,9 +83,12 @@ class _FaceDetectorViewState extends State<FaceDetectorView> {
     final faces = await _faceDetector.processImage(inputImage);
     if (inputImage.metadata?.size != null &&
         inputImage.metadata?.rotation != null) {
+      
       _customPaint = CustomPaint(
           painter: FaceDetectorPainter(faces, inputImage.metadata!.size,
-              inputImage.metadata!.rotation, _cameraLensDirection));
+              inputImage.metadata!.rotation, _cameraLensDirection,color));
+      
+      
     } else {
       String text = 'Faces found: ${faces.length}\n\n';
       for (final face in faces) {
@@ -116,12 +120,19 @@ class _FaceDetectorViewState extends State<FaceDetectorView> {
         );
         if (recognitions != null && recognitions.isNotEmpty) {
           setState(() {
-            _result = "valor: ${recognitions[0]['label']}";
+            _result = "${recognitions[0]['label']}";
           });
+          if (_result == 'kristell') {
+            color = 'paint1';
+          } else if (_result == 'extranio') {
+            color = 'paint3';
+          }
         }
       } catch (e) {
         print('Error al clasificar la imagen: $e');
       }
     }
   }
+
+
 }

@@ -44,6 +44,7 @@ class _HomeState extends State<Home> {
     _cameraController = CameraController(
       frontCamera,
       ResolutionPreset.medium,
+      imageFormatGroup: ImageFormatGroup.yuv420
     );
 
     try {
