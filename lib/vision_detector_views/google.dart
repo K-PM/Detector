@@ -79,6 +79,11 @@ class _FaceDetectorViewState extends State<FaceDetectorView> {
     });
 
     _classifyImage(image);
+    if (_result == 'kristell') {
+            color = 'paint1';
+          } else {
+            color = 'paint3';
+          }
 
     final faces = await _faceDetector.processImage(inputImage);
     if (inputImage.metadata?.size != null &&
@@ -122,11 +127,7 @@ class _FaceDetectorViewState extends State<FaceDetectorView> {
           setState(() {
             _result = "${recognitions[0]['label']}";
           });
-          if (_result == 'kristell') {
-            color = 'paint1';
-          } else if (_result == 'extranio') {
-            color = 'paint3';
-          }
+          
         }
       } catch (e) {
         print('Error al clasificar la imagen: $e');

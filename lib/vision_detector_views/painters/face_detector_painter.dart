@@ -17,18 +17,15 @@ class FaceDetectorPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final Paint paint2 = Paint()
+    final Paint paint1 = Paint()
       ..style = PaintingStyle.fill
       ..strokeWidth = 1.0
       ..color = Color.fromARGB(255, 237, 237, 80);
-    final Paint paint3 = Paint()
+    final Paint paint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.0
-      ..color = Color.fromARGB(255, 12, 250, 0);
-    final Paint paint1 = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.0
-      ..color = Color.fromARGB(255, 248, 8, 8);
+      ..color = color =='paint1'? Color.fromARGB(255, 12, 250, 0) : Color.fromARGB(255, 248, 8, 8);
+       
 
     for (final Face face in faces) {
       final left = translateX(
@@ -59,19 +56,12 @@ class FaceDetectorPainter extends CustomPainter {
         rotation,
         cameraLensDirection,
       );
-      if(color=="paint3"){
-          canvas.drawRect(
-            Rect.fromLTRB(left, top, right, bottom),
-            paint3,
-          );
-        }
-        
-      if(color=="paint1"){
-          canvas.drawRect(
-            Rect.fromLTRB(left, top, right, bottom),
-            paint1,
-          );
-        }
+      
+      canvas.drawRect(
+        Rect.fromLTRB(left, top, right, bottom),
+        paint,
+      );
+    
       
 
       void paintLandmark(FaceLandmarkType type) {
@@ -95,7 +85,7 @@ class FaceDetectorPainter extends CustomPainter {
                 ),
               ),
               2,
-              paint2);
+              paint1);
         }
       }
 

@@ -107,7 +107,7 @@ class _CameraViewState extends State<CameraView> {
     final camera = _cameras[_cameraIndex];
     _controller = CameraController(
       camera,
-      ResolutionPreset.high,
+      ResolutionPreset.medium,
       enableAudio: false,
       imageFormatGroup: ImageFormatGroup.yuv420,
     );
